@@ -17,11 +17,29 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+       
+
+        public void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string traducere = "10";
-            MessageBox.Show( x , "My Application",
-MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+            TextBox objTextBox = (TextBox)sender;
+            string theText = objTextBox.Text;
+            
         }
+
+        public void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBox1.Items.Add(new object[1] { "Romana" });
+        }
+
+        public void button1_Click(object sender, EventArgs e)
+        {
+            
+            MessageBox.Show( theText , "My Application",
+            MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+        }
+
+       
+
+        
     }
 }
