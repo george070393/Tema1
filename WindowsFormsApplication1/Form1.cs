@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -14,63 +15,47 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
-        
-       
         public Form1()
         {
             InitializeComponent();
-            
+
+            languageComboBox.SelectedIndex = 0;
         }
 
-        
-
-        public string textBox1_TextChanged(object sender, EventArgs e)
+        private void translateButton_Click(object sender, EventArgs e)
         {
-            
-            TextBox objTextBox = (TextBox)sender;
-            string insertText = objTextBox.Text;
-            return insertText;
-        }
-
-        
-
-        public string comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           string selected = this.comboBox1.GetItemText(this.comboBox1.SelectedItem);
-            return selected;
-
-        }
-
-        public void button1_Click(object sender, EventArgs e)
-        {
-
-            string insertText;
-            string selected;
-            string result;
-            int number;
-            number = Convert.ToInt32(insertText);
-            if (selected == "English")
+            //validate the Input Number
+            if (String.IsNullOrWhiteSpace(numberTextbox.Text))
             {
-                result = number.ToWords(culture: English);
+                MessageBox.Show("The input number must have a value!");
+                numberTextbox.Focus();
+                return;
             }
-             if (selected == "German")
-             {
-                 result = number.ToWords(culture: German);
-             }
-             if (selected == "Spanish")
-             {
-                 result = number.ToWords(culture: Spanish);
-             }
-             if (selected == "French")
-             {
-                 result = number.ToWords(culture: French);
-             }
-             else
-             {
-                 result = number.ToWords(culture: Romanian);
-             }
-            MessageBox.Show( result , "The number is:",
-MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+
+            //translate the number to the selected language
+            int numberToTranslate = Int32.Parse(numberTextbox.Text);
+            string selectedLanguage = languageComboBox.Text;
+            CultureInfo selectedCulture = null;
+
+            switch (selectedLanguage)
+            {
+                case "English":
+                    selectedCulture = new CultureInfo("en");
+                    break;
+                case "German":
+                    selectedCulture = new CultureInfo("de");
+                    break;
+                case "Spanish":
+                    selectedCulture = new CultureInfo("es");
+                    break;
+                case "French":
+                    selectedCulture = new CultureInfo("fr");
+                    break;
+            }
+            string result = numberToTranslate.ToWords(selectedCulture);
+
+            //show the result
+            MessageBox.Show(result, "The number is:", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

@@ -28,54 +28,54 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.translateButton = new System.Windows.Forms.Button();
+            this.languageComboBox = new System.Windows.Forms.ComboBox();
+            this.numberTextbox = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
-            // button1
+            // translateButton
             // 
-            this.button1.Location = new System.Drawing.Point(262, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Traducere";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.translateButton.Location = new System.Drawing.Point(251, 16);
+            this.translateButton.Name = "translateButton";
+            this.translateButton.Size = new System.Drawing.Size(75, 23);
+            this.translateButton.TabIndex = 0;
+            this.translateButton.Text = "Translate";
+            this.translateButton.UseVisualStyleBackColor = true;
+            this.translateButton.Click += new System.EventHandler(this.translateButton_Click);
             // 
-            // comboBox1
+            // languageComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Romanian",
+            this.languageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.languageComboBox.FormattingEnabled = true;
+            this.languageComboBox.Items.AddRange(new object[] {
             "English",
             "German",
             "French",
             "Spanish"});
-            this.comboBox1.Location = new System.Drawing.Point(114, 16);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.languageComboBox.Location = new System.Drawing.Point(114, 16);
+            this.languageComboBox.Name = "languageComboBox";
+            this.languageComboBox.Size = new System.Drawing.Size(121, 21);
+            this.languageComboBox.TabIndex = 1;
             // 
-            // textBox1
+            // numberTextbox
             // 
-            this.textBox1.Location = new System.Drawing.Point(8, 16);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.numberTextbox.Location = new System.Drawing.Point(8, 16);
+            this.numberTextbox.Mask = "0000";
+            this.numberTextbox.Name = "numberTextbox";
+            this.numberTextbox.Size = new System.Drawing.Size(100, 20);
+            this.numberTextbox.TabIndex = 3;
+            this.numberTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(362, 261);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.numberTextbox);
+            this.Controls.Add(this.languageComboBox);
+            this.Controls.Add(this.translateButton);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Translate Form";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -83,9 +83,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button translateButton;
+        private System.Windows.Forms.ComboBox languageComboBox;
+        private System.Windows.Forms.MaskedTextBox numberTextbox;
     }
 }
 
